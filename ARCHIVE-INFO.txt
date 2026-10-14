@@ -1,0 +1,31 @@
+AiNspire development folder archive
+Created: 2026-10-14
+Source: ainspire-dev folder on the owner's Mac
+Destination: private shahrilnizam-25/ainspire-dev-archive repository
+Branch: ainspire-dev-archive-2026-10-14
+
+This is a source and media snapshot, not a byte-for-byte machine backup.
+The original public v1/v2 repository and its branches are unchanged.
+
+Excluded from the snapshot and from the copied ZIP files:
+- Nested Git metadata and history
+- Credentials, token_cache.json, private PEM files, and environment files
+  (safe .env.example templates are retained)
+- node_modules, runtime/tool caches, virtual environments, Python caches,
+  generated dist/coverage/Next.js output, and local database backups
+- macOS .DS_Store files and TypeScript incremental build state
+
+ZIP files containing excluded content were sanitized in the archive copy.
+Original files in the source folder were not modified.
+The top-level v2 symlink is preserved and points to v1/v2.
+
+Videos and ZIP files are stored using Git LFS.
+To restore all source and media, install Git and Git LFS, then run:
+
+  git lfs install
+  git clone --branch ainspire-dev-archive-2026-10-14 https://github.com/shahrilnizam-25/ainspire-dev-archive.git
+  cd ainspire-dev-archive
+  git lfs pull
+
+GitHub's Download ZIP is not a substitute for verifying Git LFS downloads.
+Reinstall project dependencies and restore credentials separately to run apps.

@@ -1,0 +1,2 @@
+[console_scripts]
+ainspire-learning-mcp = ainspire_mcp.server:main

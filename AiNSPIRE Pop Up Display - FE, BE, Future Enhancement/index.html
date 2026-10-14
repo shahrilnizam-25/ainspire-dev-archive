@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#030712" />
+    <meta name="color-scheme" content="dark" />
+    <title>AiNspire Motion Infographics</title>
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="./assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="viewport" aria-label="AiNspire motion infographic">
+      <div class="stage" id="stage">
+        <canvas class="fx" id="fx" aria-hidden="true"></canvas>
+        <div class="bg-grid" aria-hidden="true"></div>
+        <div class="bg-glow glow-a" aria-hidden="true"></div>
+        <div class="bg-glow glow-b" aria-hidden="true"></div>
+        <div class="scanline" aria-hidden="true"></div>
+
+        <!-- ───────────────────────── Page 1 · Future enhancements ───────────────────────── -->
+        <section class="scene scene-roadmap is-active" data-duration="24000" data-reveal="6500" data-page="1" data-label="Future enhancements" aria-label="Future enhancements">
+          <div class="hero-media" aria-hidden="true"><img src="./assets/hero-3d-v6.webp" alt="" /></div>
+
+          <header class="hero">
+            <div class="lockup rv" style="--i:0">
+              <span class="tm-mark"><img src="./assets/tm-logo-official.png" alt="Telekom Malaysia" /></span>
+              <img class="ain-logo" src="./assets/ainspire-logo-transparent.png" alt="AiNspire" />
+            </div>
+            <div class="hero-copy">
+              <p class="pill rv" style="--i:1">Roadmap · Next phase</p>
+              <h1 class="rv" style="--i:2">Future <span>Enhancements</span></h1>
+              <p class="lede rv" style="--i:3">Elevating AiNspire to an enterprise-ready workforce capability system.</p>
+            </div>
+          </header>
+
+          <div class="roadmap">
+            <div class="rail" aria-hidden="true"><i class="rail-line"></i><i class="rail-dot d1"></i><i class="rail-dot d2"></i><i class="rail-dot d3"></i></div>
+
+            <div class="start-chip rv" style="--i:4">
+              <span class="start-avatar"><svg><use href="#i-users"></use></svg></span>
+              <span><b>Start: HR</b><small>After employee assessment</small></span>
+            </div>
+
+            <article class="step-card cyan rv" style="--i:5" data-step="1">
+              <span class="step-no">1</span>
+              <div class="step-body">
+                <h2>Align assessment enhancements with <b>GHCM &amp; TM skillset taxonomy</b></h2>
+                <div class="step-grid">
+                  <ul class="ticks">
+                    <li>Collaborate with GHCM to review &amp; improve.</li>
+                    <li>Map capabilities to Taxonomy.</li>
+                    <li>Validate questions &amp; relevance.</li>
+                  </ul>
+                  <svg class="viz viz-tree" viewBox="0 0 260 190" aria-hidden="true">
+                    <g class="tree-lines">
+                      <path d="M130 100 L130 30"/><path d="M130 100 L60 52"/><path d="M130 100 L200 52"/><path d="M130 100 L34 108"/><path d="M130 100 L226 108"/><path d="M130 100 L72 166"/><path d="M130 100 L188 166"/>
+                    </g>
+                    <circle class="tree-core" cx="130" cy="100" r="24"/>
+                    <text x="130" y="108" class="tree-ai">AI</text>
+                    <g class="tree-nodes">
+                      <circle cx="130" cy="30" r="8"/><circle cx="60" cy="52" r="8"/><circle cx="200" cy="52" r="8"/><circle cx="34" cy="108" r="8"/><circle cx="226" cy="108" r="8"/><circle cx="72" cy="166" r="8"/><circle cx="188" cy="166" r="8"/>
+                    </g>
+                    <text x="130" y="14" class="tree-tag">Core skills</text>
+                    <text x="250" y="142" class="tree-tag end">Proficiency 1–5</text>
+                    <text x="60" y="200" class="tree-tag">Category</text>
+                  </svg>
+                </div>
+                <p class="outcome"><b>Outcome:</b> Assessments &amp; skill-gap insights use a shared framework.</p>
+              </div>
+            </article>
+
+            <article class="step-card purple rv" style="--i:6" data-step="2">
+              <span class="step-no">2</span>
+              <div class="step-body">
+                <h2>Make learning recommendations dependable through <b>TM Learn</b></h2>
+                <div class="step-grid learn">
+                  <ul class="ticks">
+                    <li>Integrate AiNspire paths.</li>
+                    <li>Map courses to gaps.</li>
+                    <li>Confirm integration options (access, tracking).</li>
+                  </ul>
+                  <div class="learn-flow" aria-hidden="true">
+                    <span class="gap-node"><i><svg><use href="#i-user"></use></svg></i><small>Current skill gap</small></span>
+                    <span class="flow-arrow"></span>
+                    <span class="ai-node">AI<small>integration</small></span>
+                    <span class="flow-arrow"></span>
+                    <span class="learn-stack">
+                      <b>TM Learn</b>
+                      <em>Project Mgmt</em>
+                      <em>AI Fundamentals</em>
+                      <em>Public Speaking</em>
+                    </span>
+                  </div>
+                </div>
+                <p class="outcome"><b>Outcome:</b> Relevant recommendations connected to TM’s ecosystem.</p>
+              </div>
+            </article>
+
+            <article class="step-card amber rv" style="--i:7" data-step="3">
+              <span class="step-no">3</span>
+              <div class="step-body">
+                <h2>Prepare AiNspire for <b>production use</b></h2>
+                <div class="step-grid prod">
+                  <ul class="ticks">
+                    <li>Enterprise auth &amp; role-based access.</li>
+                    <li>Secure data persistence.</li>
+                    <li>Audit logging, privacy, retention.</li>
+                    <li>Backups &amp; service monitoring.</li>
+                    <li>Host reliably for AI &amp; services.</li>
+                  </ul>
+                  <div class="viz viz-secure" aria-hidden="true">
+                    <span class="orbit o1"></span><span class="orbit o2"></span>
+                    <svg class="secure-server"><use href="#i-server"></use></svg>
+                    <span class="secure-lock"><svg><use href="#i-lock"></use></svg></span>
+                    <span class="secure-tag t1">Backups</span>
+                    <span class="secure-tag t2">Monitoring</span>
+                  </div>
+                </div>
+                <p class="outcome"><b>Outcome:</b> AiNspire ready for secure, supportable use.</p>
+              </div>
+            </article>
+          </div>
+
+          <footer class="outcomes rv" style="--i:8" data-step="4">
+            <span class="loop-badge"><svg><use href="#i-refresh"></use></svg><small>Ongoing platform optimisation</small></span>
+            <div class="outcomes-main">
+              <p>Integrated strategic outcomes</p>
+              <ul>
+                <li><svg><use href="#i-network"></use></svg><span>Shared framework</span></li>
+                <li><svg><use href="#i-book"></use></svg><span>Relevant learning ecosystem</span></li>
+                <li><svg><use href="#i-shield"></use></svg><span>Secure enterprise readiness</span></li>
+              </ul>
+            </div>
+          </footer>
+        </section>
+
+        <!-- ───────────────────────── Page 2 · Front end ───────────────────────── -->
+        <section class="scene scene-frontend" data-duration="19000" data-reveal="6000" data-page="2" data-label="Front end" aria-label="Front end implementation">
+          <div class="hero-media soft" aria-hidden="true"><img src="./assets/hero-cinematic.jpg" alt="" /></div>
+
+          <header class="tech-head">
+            <div class="lockup sm rv" style="--i:0">
+              <span class="tm-mark"><img src="./assets/tm-logo-official.png" alt="Telekom Malaysia" /></span>
+              <img class="ain-logo" src="./assets/ainspire-logo-transparent.png" alt="AiNspire" />
+            </div>
+            <p class="tagline rv" style="--i:0">AI for a<br /><b>brighter tomorrow</b></p>
+          </header>
+
+          <div class="title-block">
+            <p class="pill rv" style="--i:1">Front end implementation</p>
+            <h1 class="rv" style="--i:2">Role-based <span>portal flow</span></h1>
+            <p class="lede rv" style="--i:3">A unified AiNspire experience with tailored views for employees, supervisors and HR — built for the people who power tomorrow.</p>
+          </div>
+
+          <ul class="benefits rv" style="--i:4">
+            <li><svg><use href="#i-users"></use></svg><b>Right people</b><span>See what they need</span></li>
+            <li><svg><use href="#i-target"></use></svg><b>Right insights</b><span>Enable action</span></li>
+            <li><svg><use href="#i-chart"></use></svg><b>Stronger workforce</b><span>Built for tomorrow</span></li>
+          </ul>
+
+          <div class="gate rv" style="--i:5">
+            <span class="gate-icon"><svg><use href="#i-id"></use></svg></span>
+            <div>
+              <b>Staff ID access <em>demo</em></b>
+              <span>Opens only the views granted to that ID. Sample directory, no password.</span>
+            </div>
+            <ul class="gate-roles"><li>Employee</li><li>Supervisor</li><li>HR</li></ul>
+          </div>
+          <div class="fork" aria-hidden="true"><i></i><i></i><i></i></div>
+
+          <div class="views">
+            <article class="view employee rv" style="--i:6" data-step="1">
+              <header><span class="view-icon"><svg><use href="#i-user"></use></svg></span><div><h3>Employee view</h3><p>Your path to AI contribution</p></div></header>
+              <ol>
+                <li><i>1</i><div><b>Understand</b><span>Your AI potential</span></div></li>
+                <li><i>2</i><div><b>Develop</b><span>Your learning pathway</span></div></li>
+                <li class="alt"><i>3</i><div><b>Deploy</b><span>Your project contribution</span></div></li>
+                <li class="alt"><i>4</i><div><b>Measure</b><span>Your progress &amp; impact</span></div></li>
+              </ol>
+              <p class="personas"><span style="--c:#00d4ff">Explorer</span><span style="--c:#4361ee">Builder</span><span style="--c:#9b5de5">Strategist</span><span style="--c:#ffb700">Visionary</span></p>
+            </article>
+
+            <article class="view supervisor rv" style="--i:7" data-step="2">
+              <header><span class="view-icon"><svg><use href="#i-clipboard"></use></svg></span><div><h3>Supervisor view</h3><p>Support your team’s AI contribution</p></div></header>
+              <ol>
+                <li class="alt"><i>1</i><div><b>Review request</b><span>Understand the employee’s interest</span></div></li>
+                <li class="alt"><i>2</i><div><b>Confirm capacity</b><span>Agree time and support</span></div></li>
+                <li class="alt"><i>3</i><div><b>Record decision</b><span>Approve or reject with a reason</span></div></li>
+              </ol>
+            </article>
+
+            <article class="view hr rv" style="--i:8" data-step="3">
+              <header><span class="view-icon"><svg><use href="#i-users"></use></svg></span><div><h3>HR view</h3><p>Observe · Analyse · Act</p></div></header>
+              <ol>
+                <li class="p1"><i>1</i><div><b>Understand the workforce</b><span>Identify potential &amp; support needs</span></div></li>
+                <li class="p2"><i>2</i><div><b>Develop capabilities</b><span>Close gaps through targeted learning</span></div></li>
+                <li class="p3"><i>3</i><div><b>Develop talents</b><span>Connect people to suitable roles</span></div></li>
+                <li class="p4"><i>4</i><div><b>Review outcome</b><span>Validate value &amp; guide next actions</span></div></li>
+              </ol>
+            </article>
+          </div>
+
+          <div class="foundation rv" style="--i:9" data-step="4">
+            <p>Foundation</p>
+            <ul>
+              <li><svg><use href="#i-monitor"></use></svg><div><b>Portal shell</b><span>React · Vinext · Tailwind</span></div></li>
+              <li><svg><use href="#i-database"></use></svg><div><b>Browser storage</b><span>Latest assessment &amp; POC progress</span></div></li>
+              <li><svg><use href="#i-file"></use></svg><div><b>Illustrative demo data</b><span>Demo employee, team &amp; workforce records</span></div></li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- ───────────────────────── Page 2 · Back end ───────────────────────── -->
+        <section class="scene scene-backend" data-duration="19000" data-reveal="6500" data-page="2" data-label="Back end" aria-label="Back end implementation">
+          <div class="hero-media soft" aria-hidden="true"><img src="./assets/hero-v5.jpg" alt="" /></div>
+
+          <header class="tech-head">
+            <div class="lockup sm rv" style="--i:0">
+              <span class="tm-mark"><img src="./assets/tm-logo-official.png" alt="Telekom Malaysia" /></span>
+              <img class="ain-logo" src="./assets/ainspire-logo-transparent.png" alt="AiNspire" />
+            </div>
+            <p class="tagline rv" style="--i:0">AI · Services · Learning<br /><b>Real impact</b></p>
+          </header>
+
+          <div class="title-block">
+            <p class="pill rv" style="--i:1">Back end implementation</p>
+            <h1 class="rv" style="--i:2">AI and learning <span>services</span></h1>
+            <p class="lede rv" style="--i:3">Target architecture for secure, scalable and AI-powered services that drive personalised learning and workforce growth.</p>
+          </div>
+
+          <ul class="benefits rv" style="--i:4">
+            <li><svg><use href="#i-shield"></use></svg><b>Secure by design</b></li>
+            <li><svg><use href="#i-cog"></use></svg><b>Modular and scalable</b></li>
+            <li><svg><use href="#i-target"></use></svg><b>Ready for real impact</b></li>
+          </ul>
+
+          <div class="arch">
+            <article class="node client rv" style="--i:5" data-step="1">
+              <svg><use href="#i-monitor"></use></svg><div><b>Client request</b><span>User actions from the AiNspire portal</span></div>
+            </article>
+            <i class="vlink v1"></i>
+
+            <article class="node side dir rv" style="--i:6" data-step="2">
+              <svg><use href="#i-database"></use></svg><div><b>Staff ID directory</b><span>Demo access &amp; team data</span><em class="tech">PostgreSQL</em></div>
+            </article>
+            <article class="node main api rv" style="--i:6" data-step="2">
+              <span class="badge target">Target</span>
+              <svg><use href="#i-server"></use></svg><div><b>AiNspire API</b><span>Portal requests &amp; service orchestration</span></div>
+            </article>
+            <article class="node side engine rv" style="--i:6" data-step="2">
+              <svg><use href="#i-file"></use></svg><div><b>Assessment engine</b><span>Governed scoring &amp; persona assignment</span></div>
+            </article>
+            <i class="vlink v2"></i>
+
+            <article class="node side notify rv" style="--i:7" data-step="3">
+              <svg><use href="#i-mail"></use></svg><div><b>Power Automate</b><span>Employee email notifications</span><em class="tech">Outlook</em></div>
+            </article>
+            <article class="node llm rv" style="--i:7" data-step="3">
+              <span class="badge target">Target · Change needed</span>
+              <header><svg><use href="#i-brain"></use></svg><div><b>LLM provider layer</b><span>Required for AI narrative &amp; recommendations</span></div></header>
+              <div class="providers">
+                <span class="provider"><b>GiGX</b><small>Primary provider</small></span>
+                <span class="swap"><svg><use href="#i-swap"></use></svg><small>Failover</small></span>
+                <span class="provider"><b>TM API Gateway</b><small>Failover provider</small></span>
+              </div>
+            </article>
+            <i class="vlink v3"></i>
+
+            <article class="node side mcp rv" style="--i:8" data-step="4">
+              <svg><use href="#i-search"></use></svg><div><b>MCP learning service</b><span>Search YouTube by role, domain &amp; AI capability gap</span></div>
+            </article>
+            <article class="node library rv" style="--i:8" data-step="4">
+              <span class="badge required">Required</span>
+              <svg><use href="#i-database"></use></svg>
+              <div><b>Curated AI library</b><span>Pre-vetted learning for every domain. Used as the fallback when search finds no suitable match.</span></div>
+            </article>
+            <i class="vlink v4"></i>
+
+            <article class="node results rv" style="--i:9" data-step="5">
+              <svg><use href="#i-sparkles"></use></svg>
+              <div><b>Personalised results</b><span>AI profile + learning recommendations</span></div>
+              <ul><li>Employee growth</li><li>Stronger teams</li><li>Future-ready workforce</li></ul>
+            </article>
+          </div>
+
+          <p class="warning rv" style="--i:10"><svg><use href="#i-alert"></use></svg><span><b>Production check:</b> hosting must reach both TM endpoints with trusted certificates.</span></p>
+        </section>
+
+        <p class="powered" aria-hidden="true">Powered by IT as a Service (ITaaS), GITD</p>
+
+        <div class="pause-badge" aria-hidden="true"><span></span><span></span> Paused <small>Press Space to resume</small></div>
+        <div class="toast" id="toast" aria-hidden="true"></div>
+
+        <nav class="hud" id="hud" aria-label="Playback controls">
+          <button type="button" class="pause-btn" id="pauseBtn" aria-label="Pause playback" aria-pressed="false">
+            <svg class="ic-pause"><use href="#i-pause"></use></svg>
+            <svg class="ic-play"><use href="#i-play"></use></svg>
+          </button>
+          <ol class="segments">
+            <li><button type="button" data-go="0"><span class="seg-label"><b>1</b>Future enhancements</span><span class="seg-bar"><i></i></span></button></li>
+            <li><button type="button" data-go="1"><span class="seg-label"><b>2</b>Front end</span><span class="seg-bar"><i></i></span></button></li>
+            <li><button type="button" data-go="2"><span class="seg-label"><b>2</b>Back end</span><span class="seg-bar"><i></i></span></button></li>
+          </ol>
+          <p class="hints"><kbd>←</kbd><kbd>→</kbd> Navigate <kbd>Space</kbd> Pause <kbd>F</kbd> Fullscreen</p>
+        </nav>
+
+        <div class="mini-progress" aria-hidden="true"><i></i><i></i><i></i></div>
+        <p class="sr-only" role="status" aria-live="polite" id="status">Playing · Page 1 of 2</p>
+      </div>
+    </main>
+
+    <svg class="svg-defs" aria-hidden="true">
+      <defs>
+        <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></symbol>
+        <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2 21v-1a6 6 0 0 1 6-6h2a6 6 0 0 1 6 6v1"/><circle cx="17.5" cy="9" r="2.5"/><path d="M18 14.2a5 5 0 0 1 4 4.8V21"/></symbol>
+        <symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></symbol>
+        <symbol id="i-id" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><circle cx="9" cy="11" r="2.5"/><path d="M5.5 17a3.5 3.5 0 0 1 7 0M15 9h4M15 13h4"/></symbol>
+        <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+        <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9M13 17V5M8 17v-3"/></symbol>
+        <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></symbol>
+        <symbol id="i-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></symbol>
+        <symbol id="i-file" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M10 9H8M16 13H8M16 17H8"/></symbol>
+        <symbol id="i-server" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><path d="M6 6h.01M6 18h.01"/></symbol>
+        <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+        <symbol id="i-brain" viewBox="0 0 24 24"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4M12 18V5"/></symbol>
+        <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+        <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 3v4M17 5h4M5 17v4M3 19h4"/></symbol>
+        <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+        <symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+        <symbol id="i-network" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M12 7.5V12m0 0-5.5 5M12 12l5.5 5"/></symbol>
+        <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></symbol>
+        <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol>
+        <symbol id="i-cog" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9 7 7M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></symbol>
+        <symbol id="i-alert" viewBox="0 0 24 24"><path d="M10.3 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.7 3.86a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></symbol>
+        <symbol id="i-swap" viewBox="0 0 24 24"><path d="M4 8h14m0 0-4-4m4 4-4 4M20 16H6m0 0 4-4m-4 4 4 4"/></symbol>
+        <symbol id="i-pause" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" rx="1" fill="currentColor"/><rect x="14" y="4" width="4" height="16" rx="1" fill="currentColor"/></symbol>
+        <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12-7.5a1 1 0 0 0 0-1.72l-12-7.5A1 1 0 0 0 7 4.5z" fill="currentColor"/></symbol>
+      </defs>
+    </svg>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

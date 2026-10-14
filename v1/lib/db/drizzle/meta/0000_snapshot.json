@@ -1,0 +1,3366 @@
+{
+  "id": "5155d30b-98a2-42fb-94f0-e2cd6d1762cd",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.action_plan_actions": {
+      "name": "action_plan_actions",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "phase_id": {
+          "name": "phase_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "action_text": {
+          "name": "action_text",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "owner_type": {
+          "name": "owner_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "effort_level": {
+          "name": "effort_level",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'planned'"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "action_plan_actions_phase_id_action_plan_phases_id_fk": {
+          "name": "action_plan_actions_phase_id_action_plan_phases_id_fk",
+          "tableFrom": "action_plan_actions",
+          "tableTo": "action_plan_phases",
+          "columnsFrom": [
+            "phase_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.action_plan_phases": {
+      "name": "action_plan_phases",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "action_plan_id": {
+          "name": "action_plan_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "phase_number": {
+          "name": "phase_number",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "days_label": {
+          "name": "days_label",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "objective": {
+          "name": "objective",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "success_metric": {
+          "name": "success_metric",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "action_plan_phases_plan_number_idx": {
+          "name": "action_plan_phases_plan_number_idx",
+          "columns": [
+            {
+              "expression": "action_plan_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "phase_number",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "action_plan_phases_action_plan_id_action_plans_id_fk": {
+          "name": "action_plan_phases_action_plan_id_action_plans_id_fk",
+          "tableFrom": "action_plan_phases",
+          "tableTo": "action_plans",
+          "columnsFrom": [
+            "action_plan_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.action_plans": {
+      "name": "action_plans",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "organization_id": {
+          "name": "organization_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "department_id": {
+          "name": "department_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_by_user_id": {
+          "name": "created_by_user_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "source_snapshot_id": {
+          "name": "source_snapshot_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "executive_summary": {
+          "name": "executive_summary",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "dominant_persona": {
+          "name": "dominant_persona",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "team_size": {
+          "name": "team_size",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'draft'"
+        },
+        "generated_by_model": {
+          "name": "generated_by_model",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "action_plans_organization_id_organizations_id_fk": {
+          "name": "action_plans_organization_id_organizations_id_fk",
+          "tableFrom": "action_plans",
+          "tableTo": "organizations",
+          "columnsFrom": [
+            "organization_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "action_plans_department_id_departments_id_fk": {
+          "name": "action_plans_department_id_departments_id_fk",
+          "tableFrom": "action_plans",
+          "tableTo": "departments",
+          "columnsFrom": [
+            "department_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "action_plans_created_by_user_id_users_id_fk": {
+          "name": "action_plans_created_by_user_id_users_id_fk",
+          "tableFrom": "action_plans",
+          "tableTo": "users",
+          "columnsFrom": [
+            "created_by_user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "action_plans_source_snapshot_id_workforce_snapshots_id_fk": {
+          "name": "action_plans_source_snapshot_id_workforce_snapshots_id_fk",
+          "tableFrom": "action_plans",
+          "tableTo": "workforce_snapshots",
+          "columnsFrom": [
+            "source_snapshot_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "action_plans_dominant_persona_personas_code_fk": {
+          "name": "action_plans_dominant_persona_personas_code_fk",
+          "tableFrom": "action_plans",
+          "tableTo": "personas",
+          "columnsFrom": [
+            "dominant_persona"
+          ],
+          "columnsTo": [
+            "code"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.analytics_events": {
+      "name": "analytics_events",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "event_id": {
+          "name": "event_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "occurred_at": {
+          "name": "occurred_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "session_id": {
+          "name": "session_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "assessment_session_id": {
+          "name": "assessment_session_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "organization_id": {
+          "name": "organization_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "anonymous_id": {
+          "name": "anonymous_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "event_name": {
+          "name": "event_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "event_category": {
+          "name": "event_category",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "screen_name": {
+          "name": "screen_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "language_code": {
+          "name": "language_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "question_id": {
+          "name": "question_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "result_id": {
+          "name": "result_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "recommendation_id": {
+          "name": "recommendation_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "video_id": {
+          "name": "video_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "action_plan_id": {
+          "name": "action_plan_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "properties": {
+          "name": "properties",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "route": {
+          "name": "route",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "user_agent": {
+          "name": "user_agent",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "device_type": {
+          "name": "device_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "duration_ms": {
+          "name": "duration_ms",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "success": {
+          "name": "success",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "error_code": {
+          "name": "error_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "correlation_id": {
+          "name": "correlation_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "analytics_events_event_id_idx": {
+          "name": "analytics_events_event_id_idx",
+          "columns": [
+            {
+              "expression": "event_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "analytics_events_assessment_session_id_assessment_sessions_id_fk": {
+          "name": "analytics_events_assessment_session_id_assessment_sessions_id_fk",
+          "tableFrom": "analytics_events",
+          "tableTo": "assessment_sessions",
+          "columnsFrom": [
+            "assessment_session_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "analytics_events_user_id_users_id_fk": {
+          "name": "analytics_events_user_id_users_id_fk",
+          "tableFrom": "analytics_events",
+          "tableTo": "users",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "analytics_events_organization_id_organizations_id_fk": {
+          "name": "analytics_events_organization_id_organizations_id_fk",
+          "tableFrom": "analytics_events",
+          "tableTo": "organizations",
+          "columnsFrom": [
+            "organization_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "analytics_events_language_code_languages_code_fk": {
+          "name": "analytics_events_language_code_languages_code_fk",
+          "tableFrom": "analytics_events",
+          "tableTo": "languages",
+          "columnsFrom": [
+            "language_code"
+          ],
+          "columnsTo": [
+            "code"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "analytics_events_question_id_assessment_questions_id_fk": {
+          "name": "analytics_events_question_id_assessment_questions_id_fk",
+          "tableFrom": "analytics_events",
+          "tableTo": "assessment_questions",
+          "columnsFrom": [
+            "question_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "analytics_events_result_id_assessment_results_id_fk": {
+          "name": "analytics_events_result_id_assessment_results_id_fk",
+          "tableFrom": "analytics_events",
+          "tableTo": "assessment_results",
+          "columnsFrom": [
+            "result_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "analytics_events_recommendation_id_result_recommendations_id_fk": {
+          "name": "analytics_events_recommendation_id_result_recommendations_id_fk",
+          "tableFrom": "analytics_events",
+          "tableTo": "result_recommendations",
+          "columnsFrom": [
+            "recommendation_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "analytics_events_action_plan_id_action_plans_id_fk": {
+          "name": "analytics_events_action_plan_id_action_plans_id_fk",
+          "tableFrom": "analytics_events",
+          "tableTo": "action_plans",
+          "columnsFrom": [
+            "action_plan_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.assessment_answers": {
+      "name": "assessment_answers",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "assessment_session_id": {
+          "name": "assessment_session_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "question_id": {
+          "name": "question_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "selected_option_id": {
+          "name": "selected_option_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "question_number": {
+          "name": "question_number",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "selected_option_code": {
+          "name": "selected_option_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "score": {
+          "name": "score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "time_to_answer_ms": {
+          "name": "time_to_answer_ms",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "changed_count": {
+          "name": "changed_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "answered_at": {
+          "name": "answered_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "assessment_answers_session_question_idx": {
+          "name": "assessment_answers_session_question_idx",
+          "columns": [
+            {
+              "expression": "assessment_session_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "question_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "assessment_answers_assessment_session_id_assessment_sessions_id_fk": {
+          "name": "assessment_answers_assessment_session_id_assessment_sessions_id_fk",
+          "tableFrom": "assessment_answers",
+          "tableTo": "assessment_sessions",
+          "columnsFrom": [
+            "assessment_session_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "assessment_answers_question_id_assessment_questions_id_fk": {
+          "name": "assessment_answers_question_id_assessment_questions_id_fk",
+          "tableFrom": "assessment_answers",
+          "tableTo": "assessment_questions",
+          "columnsFrom": [
+            "question_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "assessment_answers_selected_option_id_assessment_options_id_fk": {
+          "name": "assessment_answers_selected_option_id_assessment_options_id_fk",
+          "tableFrom": "assessment_answers",
+          "tableTo": "assessment_options",
+          "columnsFrom": [
+            "selected_option_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.assessment_consents": {
+      "name": "assessment_consents",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "assessment_session_id": {
+          "name": "assessment_session_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "consent_type": {
+          "name": "consent_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "consent_version": {
+          "name": "consent_version",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "accepted": {
+          "name": "accepted",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "accepted_at": {
+          "name": "accepted_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "ip_hash": {
+          "name": "ip_hash",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "user_agent": {
+          "name": "user_agent",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "assessment_consents_session_type_idx": {
+          "name": "assessment_consents_session_type_idx",
+          "columns": [
+            {
+              "expression": "assessment_session_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "consent_type",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "assessment_consents_assessment_session_id_assessment_sessions_id_fk": {
+          "name": "assessment_consents_assessment_session_id_assessment_sessions_id_fk",
+          "tableFrom": "assessment_consents",
+          "tableTo": "assessment_sessions",
+          "columnsFrom": [
+            "assessment_session_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.assessment_options": {
+      "name": "assessment_options",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "question_id": {
+          "name": "question_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "option_code": {
+          "name": "option_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "text_en": {
+          "name": "text_en",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "text_bm": {
+          "name": "text_bm",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "score": {
+          "name": "score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "display_order": {
+          "name": "display_order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        }
+      },
+      "indexes": {
+        "assessment_options_question_code_idx": {
+          "name": "assessment_options_question_code_idx",
+          "columns": [
+            {
+              "expression": "question_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "option_code",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "assessment_options_question_id_assessment_questions_id_fk": {
+          "name": "assessment_options_question_id_assessment_questions_id_fk",
+          "tableFrom": "assessment_options",
+          "tableTo": "assessment_questions",
+          "columnsFrom": [
+            "question_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.assessment_questions": {
+      "name": "assessment_questions",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "assessment_version_id": {
+          "name": "assessment_version_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "dimension_id": {
+          "name": "dimension_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "question_code": {
+          "name": "question_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "question_number": {
+          "name": "question_number",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "text_en": {
+          "name": "text_en",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "text_bm": {
+          "name": "text_bm",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "required": {
+          "name": "required",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "active": {
+          "name": "active",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        }
+      },
+      "indexes": {
+        "assessment_questions_version_code_idx": {
+          "name": "assessment_questions_version_code_idx",
+          "columns": [
+            {
+              "expression": "assessment_version_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "question_code",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "assessment_questions_version_number_idx": {
+          "name": "assessment_questions_version_number_idx",
+          "columns": [
+            {
+              "expression": "assessment_version_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "question_number",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "assessment_questions_assessment_version_id_assessment_versions_id_fk": {
+          "name": "assessment_questions_assessment_version_id_assessment_versions_id_fk",
+          "tableFrom": "assessment_questions",
+          "tableTo": "assessment_versions",
+          "columnsFrom": [
+            "assessment_version_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "assessment_questions_dimension_id_readiness_dimensions_id_fk": {
+          "name": "assessment_questions_dimension_id_readiness_dimensions_id_fk",
+          "tableFrom": "assessment_questions",
+          "tableTo": "readiness_dimensions",
+          "columnsFrom": [
+            "dimension_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.assessment_results": {
+      "name": "assessment_results",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "assessment_session_id": {
+          "name": "assessment_session_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "language_code": {
+          "name": "language_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "is_canonical": {
+          "name": "is_canonical",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "persona_code": {
+          "name": "persona_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "overall_readiness": {
+          "name": "overall_readiness",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "confidence": {
+          "name": "confidence",
+          "type": "numeric(5, 4)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "reasoning": {
+          "name": "reasoning",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "narrative": {
+          "name": "narrative",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "model_name": {
+          "name": "model_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "prompt_version": {
+          "name": "prompt_version",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mcp_context_version": {
+          "name": "mcp_context_version",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "generation_status": {
+          "name": "generation_status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'completed'"
+        },
+        "raw_model_response_redacted": {
+          "name": "raw_model_response_redacted",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "assessment_results_session_language_idx": {
+          "name": "assessment_results_session_language_idx",
+          "columns": [
+            {
+              "expression": "assessment_session_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "language_code",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "assessment_results_assessment_session_id_assessment_sessions_id_fk": {
+          "name": "assessment_results_assessment_session_id_assessment_sessions_id_fk",
+          "tableFrom": "assessment_results",
+          "tableTo": "assessment_sessions",
+          "columnsFrom": [
+            "assessment_session_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "assessment_results_language_code_languages_code_fk": {
+          "name": "assessment_results_language_code_languages_code_fk",
+          "tableFrom": "assessment_results",
+          "tableTo": "languages",
+          "columnsFrom": [
+            "language_code"
+          ],
+          "columnsTo": [
+            "code"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "assessment_results_persona_code_personas_code_fk": {
+          "name": "assessment_results_persona_code_personas_code_fk",
+          "tableFrom": "assessment_results",
+          "tableTo": "personas",
+          "columnsFrom": [
+            "persona_code"
+          ],
+          "columnsTo": [
+            "code"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.assessment_sessions": {
+      "name": "assessment_sessions",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "organization_id": {
+          "name": "organization_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "assessment_version_id": {
+          "name": "assessment_version_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "department_id": {
+          "name": "department_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "submitted_department_name": {
+          "name": "submitted_department_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "role_id": {
+          "name": "role_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "submitted_role_name": {
+          "name": "submitted_role_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "language_started": {
+          "name": "language_started",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'EN'"
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'started'"
+        },
+        "client_session_id": {
+          "name": "client_session_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "started_at": {
+          "name": "started_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "submitted_at": {
+          "name": "submitted_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "completed_at": {
+          "name": "completed_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "last_activity_at": {
+          "name": "last_activity_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "assessment_sessions_organization_id_organizations_id_fk": {
+          "name": "assessment_sessions_organization_id_organizations_id_fk",
+          "tableFrom": "assessment_sessions",
+          "tableTo": "organizations",
+          "columnsFrom": [
+            "organization_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "assessment_sessions_user_id_users_id_fk": {
+          "name": "assessment_sessions_user_id_users_id_fk",
+          "tableFrom": "assessment_sessions",
+          "tableTo": "users",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "assessment_sessions_assessment_version_id_assessment_versions_id_fk": {
+          "name": "assessment_sessions_assessment_version_id_assessment_versions_id_fk",
+          "tableFrom": "assessment_sessions",
+          "tableTo": "assessment_versions",
+          "columnsFrom": [
+            "assessment_version_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "assessment_sessions_department_id_departments_id_fk": {
+          "name": "assessment_sessions_department_id_departments_id_fk",
+          "tableFrom": "assessment_sessions",
+          "tableTo": "departments",
+          "columnsFrom": [
+            "department_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "assessment_sessions_role_id_roles_id_fk": {
+          "name": "assessment_sessions_role_id_roles_id_fk",
+          "tableFrom": "assessment_sessions",
+          "tableTo": "roles",
+          "columnsFrom": [
+            "role_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "assessment_sessions_language_started_languages_code_fk": {
+          "name": "assessment_sessions_language_started_languages_code_fk",
+          "tableFrom": "assessment_sessions",
+          "tableTo": "languages",
+          "columnsFrom": [
+            "language_started"
+          ],
+          "columnsTo": [
+            "code"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.assessment_versions": {
+      "name": "assessment_versions",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "code": {
+          "name": "code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'draft'"
+        },
+        "minimum_questions": {
+          "name": "minimum_questions",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 20
+        },
+        "maximum_questions": {
+          "name": "maximum_questions",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 20
+        },
+        "published_at": {
+          "name": "published_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "retired_at": {
+          "name": "retired_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "assessment_versions_code_idx": {
+          "name": "assessment_versions_code_idx",
+          "columns": [
+            {
+              "expression": "code",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.departments": {
+      "name": "departments",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "organization_id": {
+          "name": "organization_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "code": {
+          "name": "code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "display_order": {
+          "name": "display_order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "active": {
+          "name": "active",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "departments_org_code_idx": {
+          "name": "departments_org_code_idx",
+          "columns": [
+            {
+              "expression": "organization_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "code",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "departments_organization_id_organizations_id_fk": {
+          "name": "departments_organization_id_organizations_id_fk",
+          "tableFrom": "departments",
+          "tableTo": "organizations",
+          "columnsFrom": [
+            "organization_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.languages": {
+      "name": "languages",
+      "schema": "",
+      "columns": {
+        "code": {
+          "name": "code",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "active": {
+          "name": "active",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.learning_topics": {
+      "name": "learning_topics",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "dimension_id": {
+          "name": "dimension_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "topic_en": {
+          "name": "topic_en",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "topic_bm": {
+          "name": "topic_bm",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "search_terms_en": {
+          "name": "search_terms_en",
+          "type": "text[]",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "search_terms_bm": {
+          "name": "search_terms_bm",
+          "type": "text[]",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "active": {
+          "name": "active",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "learning_topics_dimension_id_readiness_dimensions_id_fk": {
+          "name": "learning_topics_dimension_id_readiness_dimensions_id_fk",
+          "tableFrom": "learning_topics",
+          "tableTo": "readiness_dimensions",
+          "columnsFrom": [
+            "dimension_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.open_responses": {
+      "name": "open_responses",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "assessment_session_id": {
+          "name": "assessment_session_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "question_code": {
+          "name": "question_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "response_text": {
+          "name": "response_text",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "language_code": {
+          "name": "language_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "open_responses_assessment_session_id_assessment_sessions_id_fk": {
+          "name": "open_responses_assessment_session_id_assessment_sessions_id_fk",
+          "tableFrom": "open_responses",
+          "tableTo": "assessment_sessions",
+          "columnsFrom": [
+            "assessment_session_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "open_responses_language_code_languages_code_fk": {
+          "name": "open_responses_language_code_languages_code_fk",
+          "tableFrom": "open_responses",
+          "tableTo": "languages",
+          "columnsFrom": [
+            "language_code"
+          ],
+          "columnsTo": [
+            "code"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.organizations": {
+      "name": "organizations",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "code": {
+          "name": "code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'active'"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "organizations_code_idx": {
+          "name": "organizations_code_idx",
+          "columns": [
+            {
+              "expression": "code",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.persona_readiness_bands": {
+      "name": "persona_readiness_bands",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "persona_code": {
+          "name": "persona_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "assessment_version_id": {
+          "name": "assessment_version_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "minimum_percentage": {
+          "name": "minimum_percentage",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "maximum_percentage": {
+          "name": "maximum_percentage",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "persona_bands_version_persona_idx": {
+          "name": "persona_bands_version_persona_idx",
+          "columns": [
+            {
+              "expression": "assessment_version_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "persona_code",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "persona_readiness_bands_persona_code_personas_code_fk": {
+          "name": "persona_readiness_bands_persona_code_personas_code_fk",
+          "tableFrom": "persona_readiness_bands",
+          "tableTo": "personas",
+          "columnsFrom": [
+            "persona_code"
+          ],
+          "columnsTo": [
+            "code"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "persona_readiness_bands_assessment_version_id_assessment_versions_id_fk": {
+          "name": "persona_readiness_bands_assessment_version_id_assessment_versions_id_fk",
+          "tableFrom": "persona_readiness_bands",
+          "tableTo": "assessment_versions",
+          "columnsFrom": [
+            "assessment_version_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.personas": {
+      "name": "personas",
+      "schema": "",
+      "columns": {
+        "code": {
+          "name": "code",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name_en": {
+          "name": "name_en",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name_bm": {
+          "name": "name_bm",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tagline_en": {
+          "name": "tagline_en",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tagline_bm": {
+          "name": "tagline_bm",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "description_en": {
+          "name": "description_en",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "description_bm": {
+          "name": "description_bm",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "color": {
+          "name": "color",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "icon_key": {
+          "name": "icon_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "display_order": {
+          "name": "display_order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "active": {
+          "name": "active",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.project_dimension_mappings": {
+      "name": "project_dimension_mappings",
+      "schema": "",
+      "columns": {
+        "project_id": {
+          "name": "project_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "dimension_id": {
+          "name": "dimension_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "priority": {
+          "name": "priority",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "project_dimension_mappings_project_id_projects_id_fk": {
+          "name": "project_dimension_mappings_project_id_projects_id_fk",
+          "tableFrom": "project_dimension_mappings",
+          "tableTo": "projects",
+          "columnsFrom": [
+            "project_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "project_dimension_mappings_dimension_id_readiness_dimensions_id_fk": {
+          "name": "project_dimension_mappings_dimension_id_readiness_dimensions_id_fk",
+          "tableFrom": "project_dimension_mappings",
+          "tableTo": "readiness_dimensions",
+          "columnsFrom": [
+            "dimension_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "project_dimension_mappings_project_id_dimension_id_pk": {
+          "name": "project_dimension_mappings_project_id_dimension_id_pk",
+          "columns": [
+            "project_id",
+            "dimension_id"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.projects": {
+      "name": "projects",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "organization_id": {
+          "name": "organization_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "department_id": {
+          "name": "department_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "code": {
+          "name": "code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name_en": {
+          "name": "name_en",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name_bm": {
+          "name": "name_bm",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "description_en": {
+          "name": "description_en",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "description_bm": {
+          "name": "description_bm",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "active": {
+          "name": "active",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "projects_organization_id_organizations_id_fk": {
+          "name": "projects_organization_id_organizations_id_fk",
+          "tableFrom": "projects",
+          "tableTo": "organizations",
+          "columnsFrom": [
+            "organization_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "projects_department_id_departments_id_fk": {
+          "name": "projects_department_id_departments_id_fk",
+          "tableFrom": "projects",
+          "tableTo": "departments",
+          "columnsFrom": [
+            "department_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.readiness_dimensions": {
+      "name": "readiness_dimensions",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "code": {
+          "name": "code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name_en": {
+          "name": "name_en",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name_bm": {
+          "name": "name_bm",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description_en": {
+          "name": "description_en",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "description_bm": {
+          "name": "description_bm",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "display_order": {
+          "name": "display_order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "active": {
+          "name": "active",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        }
+      },
+      "indexes": {
+        "readiness_dimensions_code_idx": {
+          "name": "readiness_dimensions_code_idx",
+          "columns": [
+            {
+              "expression": "code",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.recommendation_videos": {
+      "name": "recommendation_videos",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "recommendation_id": {
+          "name": "recommendation_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "video_id": {
+          "name": "video_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "video_url": {
+          "name": "video_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "thumbnail_url": {
+          "name": "thumbnail_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "video_title": {
+          "name": "video_title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "channel_title": {
+          "name": "channel_title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "duration": {
+          "name": "duration",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "relevance_statement": {
+          "name": "relevance_statement",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "youtube_api_source": {
+          "name": "youtube_api_source",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "recommendation_videos_recommendation_idx": {
+          "name": "recommendation_videos_recommendation_idx",
+          "columns": [
+            {
+              "expression": "recommendation_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "recommendation_videos_recommendation_id_result_recommendations_id_fk": {
+          "name": "recommendation_videos_recommendation_id_result_recommendations_id_fk",
+          "tableFrom": "recommendation_videos",
+          "tableTo": "result_recommendations",
+          "columnsFrom": [
+            "recommendation_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.result_dimension_scores": {
+      "name": "result_dimension_scores",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "assessment_result_id": {
+          "name": "assessment_result_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "dimension_id": {
+          "name": "dimension_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "score": {
+          "name": "score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "score_max": {
+          "name": "score_max",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 100
+        },
+        "percentage": {
+          "name": "percentage",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "result_dimension_scores_result_dimension_idx": {
+          "name": "result_dimension_scores_result_dimension_idx",
+          "columns": [
+            {
+              "expression": "assessment_result_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "dimension_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "result_dimension_scores_assessment_result_id_assessment_results_id_fk": {
+          "name": "result_dimension_scores_assessment_result_id_assessment_results_id_fk",
+          "tableFrom": "result_dimension_scores",
+          "tableTo": "assessment_results",
+          "columnsFrom": [
+            "assessment_result_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "result_dimension_scores_dimension_id_readiness_dimensions_id_fk": {
+          "name": "result_dimension_scores_dimension_id_readiness_dimensions_id_fk",
+          "tableFrom": "result_dimension_scores",
+          "tableTo": "readiness_dimensions",
+          "columnsFrom": [
+            "dimension_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.result_persona_scores": {
+      "name": "result_persona_scores",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "assessment_result_id": {
+          "name": "assessment_result_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "persona_code": {
+          "name": "persona_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "score": {
+          "name": "score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "result_persona_scores_result_persona_idx": {
+          "name": "result_persona_scores_result_persona_idx",
+          "columns": [
+            {
+              "expression": "assessment_result_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "persona_code",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "result_persona_scores_assessment_result_id_assessment_results_id_fk": {
+          "name": "result_persona_scores_assessment_result_id_assessment_results_id_fk",
+          "tableFrom": "result_persona_scores",
+          "tableTo": "assessment_results",
+          "columnsFrom": [
+            "assessment_result_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "result_persona_scores_persona_code_personas_code_fk": {
+          "name": "result_persona_scores_persona_code_personas_code_fk",
+          "tableFrom": "result_persona_scores",
+          "tableTo": "personas",
+          "columnsFrom": [
+            "persona_code"
+          ],
+          "columnsTo": [
+            "code"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.result_recommendations": {
+      "name": "result_recommendations",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "assessment_result_id": {
+          "name": "assessment_result_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sequence_number": {
+          "name": "sequence_number",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "recommendation_type": {
+          "name": "recommendation_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'learning'"
+        },
+        "dimension_id": {
+          "name": "dimension_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "source": {
+          "name": "source",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'mcp'"
+        }
+      },
+      "indexes": {
+        "result_recommendations_result_sequence_idx": {
+          "name": "result_recommendations_result_sequence_idx",
+          "columns": [
+            {
+              "expression": "assessment_result_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "sequence_number",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "result_recommendations_assessment_result_id_assessment_results_id_fk": {
+          "name": "result_recommendations_assessment_result_id_assessment_results_id_fk",
+          "tableFrom": "result_recommendations",
+          "tableTo": "assessment_results",
+          "columnsFrom": [
+            "assessment_result_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "result_recommendations_dimension_id_readiness_dimensions_id_fk": {
+          "name": "result_recommendations_dimension_id_readiness_dimensions_id_fk",
+          "tableFrom": "result_recommendations",
+          "tableTo": "readiness_dimensions",
+          "columnsFrom": [
+            "dimension_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.roles": {
+      "name": "roles",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "organization_id": {
+          "name": "organization_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "department_id": {
+          "name": "department_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "code": {
+          "name": "code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "display_order": {
+          "name": "display_order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "active": {
+          "name": "active",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "roles_org_code_idx": {
+          "name": "roles_org_code_idx",
+          "columns": [
+            {
+              "expression": "organization_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "code",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "roles_organization_id_organizations_id_fk": {
+          "name": "roles_organization_id_organizations_id_fk",
+          "tableFrom": "roles",
+          "tableTo": "organizations",
+          "columnsFrom": [
+            "organization_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "roles_department_id_departments_id_fk": {
+          "name": "roles_department_id_departments_id_fk",
+          "tableFrom": "roles",
+          "tableTo": "departments",
+          "columnsFrom": [
+            "department_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.users": {
+      "name": "users",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "organization_id": {
+          "name": "organization_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "employee_number": {
+          "name": "employee_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "user_type": {
+          "name": "user_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'employee'"
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'active'"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "users_employee_number_idx": {
+          "name": "users_employee_number_idx",
+          "columns": [
+            {
+              "expression": "organization_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "employee_number",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "users_email_idx": {
+          "name": "users_email_idx",
+          "columns": [
+            {
+              "expression": "email",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "users_organization_id_organizations_id_fk": {
+          "name": "users_organization_id_organizations_id_fk",
+          "tableFrom": "users",
+          "tableTo": "organizations",
+          "columnsFrom": [
+            "organization_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.workforce_assessment_links": {
+      "name": "workforce_assessment_links",
+      "schema": "",
+      "columns": {
+        "workforce_member_id": {
+          "name": "workforce_member_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "assessment_session_id": {
+          "name": "assessment_session_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "is_current": {
+          "name": "is_current",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "linked_at": {
+          "name": "linked_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "workforce_assessment_links_workforce_member_id_workforce_members_id_fk": {
+          "name": "workforce_assessment_links_workforce_member_id_workforce_members_id_fk",
+          "tableFrom": "workforce_assessment_links",
+          "tableTo": "workforce_members",
+          "columnsFrom": [
+            "workforce_member_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "workforce_assessment_links_assessment_session_id_assessment_sessions_id_fk": {
+          "name": "workforce_assessment_links_assessment_session_id_assessment_sessions_id_fk",
+          "tableFrom": "workforce_assessment_links",
+          "tableTo": "assessment_sessions",
+          "columnsFrom": [
+            "assessment_session_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "workforce_assessment_links_workforce_member_id_assessment_session_id_pk": {
+          "name": "workforce_assessment_links_workforce_member_id_assessment_session_id_pk",
+          "columns": [
+            "workforce_member_id",
+            "assessment_session_id"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.workforce_members": {
+      "name": "workforce_members",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "organization_id": {
+          "name": "organization_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "employee_number": {
+          "name": "employee_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "department_id": {
+          "name": "department_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "role_id": {
+          "name": "role_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "grade_code": {
+          "name": "grade_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "active": {
+          "name": "active",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        }
+      },
+      "indexes": {
+        "workforce_members_org_employee_idx": {
+          "name": "workforce_members_org_employee_idx",
+          "columns": [
+            {
+              "expression": "organization_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "employee_number",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "workforce_members_organization_id_organizations_id_fk": {
+          "name": "workforce_members_organization_id_organizations_id_fk",
+          "tableFrom": "workforce_members",
+          "tableTo": "organizations",
+          "columnsFrom": [
+            "organization_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "workforce_members_department_id_departments_id_fk": {
+          "name": "workforce_members_department_id_departments_id_fk",
+          "tableFrom": "workforce_members",
+          "tableTo": "departments",
+          "columnsFrom": [
+            "department_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "workforce_members_role_id_roles_id_fk": {
+          "name": "workforce_members_role_id_roles_id_fk",
+          "tableFrom": "workforce_members",
+          "tableTo": "roles",
+          "columnsFrom": [
+            "role_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.workforce_persona_distributions": {
+      "name": "workforce_persona_distributions",
+      "schema": "",
+      "columns": {
+        "snapshot_id": {
+          "name": "snapshot_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "persona_code": {
+          "name": "persona_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "member_count": {
+          "name": "member_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "percentage": {
+          "name": "percentage",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "workforce_persona_distributions_snapshot_id_workforce_snapshots_id_fk": {
+          "name": "workforce_persona_distributions_snapshot_id_workforce_snapshots_id_fk",
+          "tableFrom": "workforce_persona_distributions",
+          "tableTo": "workforce_snapshots",
+          "columnsFrom": [
+            "snapshot_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "workforce_persona_distributions_persona_code_personas_code_fk": {
+          "name": "workforce_persona_distributions_persona_code_personas_code_fk",
+          "tableFrom": "workforce_persona_distributions",
+          "tableTo": "personas",
+          "columnsFrom": [
+            "persona_code"
+          ],
+          "columnsTo": [
+            "code"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "workforce_persona_distributions_snapshot_id_persona_code_pk": {
+          "name": "workforce_persona_distributions_snapshot_id_persona_code_pk",
+          "columns": [
+            "snapshot_id",
+            "persona_code"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.workforce_snapshots": {
+      "name": "workforce_snapshots",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "organization_id": {
+          "name": "organization_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "department_id": {
+          "name": "department_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "snapshot_date": {
+          "name": "snapshot_date",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "completed_count": {
+          "name": "completed_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "pending_count": {
+          "name": "pending_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "average_readiness": {
+          "name": "average_readiness",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "dominant_persona": {
+          "name": "dominant_persona",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "workforce_snapshots_organization_id_organizations_id_fk": {
+          "name": "workforce_snapshots_organization_id_organizations_id_fk",
+          "tableFrom": "workforce_snapshots",
+          "tableTo": "organizations",
+          "columnsFrom": [
+            "organization_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "workforce_snapshots_department_id_departments_id_fk": {
+          "name": "workforce_snapshots_department_id_departments_id_fk",
+          "tableFrom": "workforce_snapshots",
+          "tableTo": "departments",
+          "columnsFrom": [
+            "department_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "workforce_snapshots_dominant_persona_personas_code_fk": {
+          "name": "workforce_snapshots_dominant_persona_personas_code_fk",
+          "tableFrom": "workforce_snapshots",
+          "tableTo": "personas",
+          "columnsFrom": [
+            "dominant_persona"
+          ],
+          "columnsTo": [
+            "code"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

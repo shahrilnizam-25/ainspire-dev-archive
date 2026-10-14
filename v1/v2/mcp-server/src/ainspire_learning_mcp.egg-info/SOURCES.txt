@@ -1,0 +1,12 @@
+pyproject.toml
+src/ainspire_learning_mcp.egg-info/PKG-INFO
+src/ainspire_learning_mcp.egg-info/SOURCES.txt
+src/ainspire_learning_mcp.egg-info/dependency_links.txt
+src/ainspire_learning_mcp.egg-info/entry_points.txt
+src/ainspire_learning_mcp.egg-info/requires.txt
+src/ainspire_learning_mcp.egg-info/top_level.txt
+src/ainspire_mcp/__init__.py
+src/ainspire_mcp/catalog.py
+src/ainspire_mcp/server.py
+src/ainspire_mcp/youtube.py
+tests/test_server.py

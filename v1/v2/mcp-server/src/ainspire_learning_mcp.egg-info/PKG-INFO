@@ -1,0 +1,10 @@
+Metadata-Version: 2.4
+Name: ainspire-learning-mcp
+Version: 0.1.0
+Summary: FastMCP tools for AiNspire learning paths and video discovery
+Requires-Python: >=3.11
+Requires-Dist: fastmcp<5,>=4.1
+Requires-Dist: httpx<1,>=0.28
+Provides-Extra: dev
+Requires-Dist: pytest<10,>=8; extra == "dev"
+Requires-Dist: pytest-asyncio<2,>=0.24; extra == "dev"

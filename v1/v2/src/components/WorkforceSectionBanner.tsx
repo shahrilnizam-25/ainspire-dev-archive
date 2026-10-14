@@ -1,0 +1,9 @@
+import {BookOpen,BriefcaseBusiness,ChartNoAxesCombined} from 'lucide-react';
+
+export default function WorkforceSectionBanner({id,eyebrow,title,description,tone='workforce'}:{id:string;eyebrow:string;title:string;description:string;tone?:'workforce'|'learning'|'contribution'}){
+ const purple=tone!=='workforce';const Icon=tone==='learning'?BookOpen:tone==='contribution'?BriefcaseBusiness:ChartNoAxesCombined;
+ return <div className={'relative mb-6 overflow-hidden rounded-3xl border px-6 py-7 sm:px-8 sm:py-8 '+(purple?'border-violet-400/40':'border-cyan-400/40')} style={{background:purple?'radial-gradient(ellipse at 0% 50%, rgba(167,139,250,0.13), transparent 65%), linear-gradient(110deg, #181226, #11101f 70%, #0d0c1b)':'radial-gradient(ellipse at 0% 50%, rgba(0,212,255,0.13), transparent 65%), linear-gradient(110deg, #071b26, #08121f 70%, #080f1b)',boxShadow:'0 12px 40px rgba(0,0,0,0.2)'}}>
+ <div aria-hidden="true" className={'pointer-events-none absolute -right-12 -top-20 h-64 w-64 rounded-full border '+(purple?'border-violet-400/10':'border-cyan-400/10')}/>
+ <div className="relative flex items-start gap-4 sm:items-center sm:gap-6"><span className={'flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border sm:h-[72px] sm:w-[72px] '+(purple?'border-violet-300/40 bg-violet-400/10 text-violet-300':'border-cyan-300/40 bg-cyan-400/10 text-cyan-300')}><Icon className="h-8 w-8 sm:h-9 sm:w-9" aria-hidden="true"/></span><div className="min-w-0"><p className={'text-xs font-black uppercase tracking-[0.15em] sm:text-sm '+(purple?'text-violet-300':'text-cyan-300')}>{eyebrow}</p><h2 id={id} className="mt-3 text-2xl font-black leading-tight tracking-tight text-white sm:text-3xl lg:text-4xl">{title}</h2><p className="mt-3 max-w-4xl text-sm leading-7 text-slate-300 sm:text-base">{description}</p></div></div>
+ </div>;
+}

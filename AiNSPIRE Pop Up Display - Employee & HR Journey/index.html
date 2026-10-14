@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#030712" />
+    <meta name="color-scheme" content="dark" />
+    <title>AiNspire · Employee &amp; HR Journey</title>
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="./assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="viewport" aria-label="AiNspire motion infographic">
+      <div class="stage" id="stage">
+        <canvas class="fx" id="fx" aria-hidden="true"></canvas>
+        <div class="bg-grid" aria-hidden="true"></div>
+        <div class="bg-glow glow-a" aria-hidden="true"></div>
+        <div class="bg-glow glow-b" aria-hidden="true"></div>
+        <div class="scanline" aria-hidden="true"></div>
+
+        <!-- ───────────────────────── Page 1 · Employee Journey ───────────────────────── -->
+        <section class="scene scene-emp is-active" data-duration="24000" data-reveal="6000" data-page="1" data-label="Employee Journey" aria-label="Employee Journey">
+          <div class="hero-media" aria-hidden="true"><img src="./assets/hero-cinematic.jpg" alt="" /></div>
+
+          <header class="hero">
+            <div class="lockup rv" style="--i:0">
+              <span class="tm-mark"><img src="./assets/tm-logo-official.png" alt="Telekom Malaysia" /></span>
+              <img class="ain-logo" src="./assets/ainspire-logo-transparent.png" alt="AiNspire" />
+            </div>
+            <div class="hero-copy">
+              <p class="pill rv" style="--i:1">Employee Pathway</p>
+              <h1 class="rv" style="--i:2">Employee <span>Journey</span></h1>
+              <p class="lede rv" style="--i:3">Understand your potential. Find your contribution.</p>
+            </div>
+          </header>
+
+          <div class="journey-content">
+            <!-- Start Node with Employee Portrait Avatar -->
+            <div class="start-chip rv" style="--i:4" data-step="0">
+              <span class="start-avatar">
+                <img src="./assets/avatar-employee.png" alt="Employee" />
+              </span>
+              <span><b>Start: Employee</b><small>AI readiness assessment</small></span>
+            </div>
+
+            <!-- Steps 01 to 03 Sequence -->
+            <div class="steps-seq">
+              <article class="step-card cyan rv" style="--i:5" data-step="1">
+                <span class="step-no">01</span>
+                <div class="step-body">
+                  <h2><b>Understand</b> AI potential</h2>
+                  <div class="step-desc">
+                    <p class="main-txt">Complete AI assessment</p>
+                    <p class="sub-txt">AI persona + profile confidence</p>
+                  </div>
+                </div>
+                <div class="card-viz">
+                  <div class="viz-icon cyan"><svg><use href="#i-lightbulb"></use></svg></div>
+                </div>
+              </article>
+
+              <article class="step-card purple rv" style="--i:6" data-step="2">
+                <span class="step-no">02</span>
+                <div class="step-body">
+                  <h2><b>Develop</b> capabilities</h2>
+                  <div class="step-desc">
+                    <p class="main-txt">Personalised learning pathway</p>
+                    <p class="sub-txt">Complete learning and record progress</p>
+                  </div>
+                </div>
+                <div class="card-viz">
+                  <div class="viz-icon purple"><svg><use href="#i-book"></use></svg></div>
+                </div>
+              </article>
+
+              <article class="step-card amber rv" style="--i:7" data-step="3">
+                <span class="step-no">03</span>
+                <div class="step-body">
+                  <h2><b>Deploy</b> contribution</h2>
+                  <div class="step-desc">
+                    <p class="main-txt">View contribution role and AI projects</p>
+                    <p class="sub-txt">Show Interest</p>
+                  </div>
+                </div>
+                <div class="card-viz">
+                  <div class="viz-icon amber"><svg><use href="#i-briefcase"></use></svg></div>
+                </div>
+              </article>
+            </div>
+
+            <!-- Decision & Approval Bifurcation Grid -->
+            <div class="decision-grid rv" style="--i:8" data-step="4">
+              <!-- Rejection / Loopback Left Column -->
+              <div class="dec-col reject-col">
+                <div class="status-tag tag-reject">
+                  <svg><use href="#i-arrow-up"></use></svg>
+                  <span>Rejected · Loopback</span>
+                </div>
+                <div class="action-box reject-box">
+                  <div class="box-icon amber"><svg><use href="#i-file-text"></use></svg></div>
+                  <div class="box-body">
+                    <b>Review reason &amp; agree support</b>
+                    <small>Consider another project or learning</small>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Center Decision Hub -->
+              <div class="decision-hub">
+                <span class="hub-hint">Review capacity, support &amp; suitability</span>
+                <div class="hub-diamond">
+                  <svg class="hub-ic"><use href="#i-user-check"></use></svg>
+                  <b>Supervisor<br />decision</b>
+                </div>
+              </div>
+
+              <!-- Approval Right Column -->
+              <div class="dec-col approve-col">
+                <div class="status-tag tag-approve">
+                  <svg><use href="#i-arrow-down"></use></svg>
+                  <span>Approved</span>
+                </div>
+                <div class="action-box approve-box">
+                  <div class="box-icon green"><svg><use href="#i-clipboard-check"></use></svg></div>
+                  <div class="box-body">
+                    <b>Confirm assignment</b>
+                    <small>Project team onboarded</small>
+                  </div>
+                </div>
+                <div class="action-box participate-box">
+                  <div class="box-icon green"><svg><use href="#i-cog"></use></svg></div>
+                  <div class="box-body">
+                    <b>Participate &amp; complete project</b>
+                    <small>Deliver measurable AI impact</small>
+                  </div>
+                </div>
+                <div class="measure-chip">
+                  <span class="chip-num">04</span>
+                  <b>Measure Progress &amp; Impact</b>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contribution Realised Card -->
+            <footer class="realised-card rv" style="--i:9" data-step="5">
+              <div class="realised-head">
+                <span class="pulse-sparkle"><svg><use href="#i-sparkles"></use></svg></span>
+                <p>Contribution Realised</p>
+                <span class="pulse-sparkle"><svg><use href="#i-sparkles"></use></svg></span>
+              </div>
+              <div class="realised-grid">
+                <div class="realised-item c-cyan">
+                  <div class="r-icon"><svg><use href="#i-coins"></use></svg></div>
+                  <div class="r-text"><b>Cost avoidance</b><span>Eliminate redundancy</span></div>
+                </div>
+                <div class="realised-item c-green">
+                  <div class="r-icon"><svg><use href="#i-dollar"></use></svg></div>
+                  <div class="r-text"><b>Cost saving</b><span>Optimised operations</span></div>
+                </div>
+                <div class="realised-item c-purple">
+                  <div class="r-icon"><svg><use href="#i-chart-trend"></use></svg></div>
+                  <div class="r-text"><b>Productivity gain</b><span>Accelerated speed</span></div>
+                </div>
+                <div class="realised-item c-blue">
+                  <div class="r-icon"><svg><use href="#i-users-group"></use></svg></div>
+                  <div class="r-text"><b>Internalisation</b><span>In-house AI expertise</span></div>
+                </div>
+              </div>
+            </footer>
+          </div>
+        </section>
+
+        <!-- ───────────────────────── Page 2 · HR Journey ───────────────────────── -->
+        <section class="scene scene-hr" data-duration="24000" data-reveal="6000" data-page="2" data-label="HR Journey" aria-label="HR Journey">
+          <div class="hero-media soft" aria-hidden="true"><img src="./assets/hero-3d-v6.webp" alt="" /></div>
+
+          <header class="hero">
+            <div class="lockup rv" style="--i:0">
+              <span class="tm-mark"><img src="./assets/tm-logo-official.png" alt="Telekom Malaysia" /></span>
+              <img class="ain-logo" src="./assets/ainspire-logo-transparent.png" alt="AiNspire" />
+            </div>
+            <div class="hero-copy">
+              <p class="pill rv" style="--i:1">Workforce Intelligence</p>
+              <h1 class="rv" style="--i:2">HR <span>Journey</span></h1>
+              <p class="lede rv" style="--i:3">Observe, analyse and act on workforce evidence.</p>
+            </div>
+          </header>
+
+          <div class="journey-content hr-content">
+            <!-- Left loopback review rail -->
+            <div class="hr-loop-rail" aria-hidden="true">
+              <div class="rail-arrow"><svg><use href="#i-arrow-up"></use></svg></div>
+              <div class="rail-bar"></div>
+              <span class="rail-txt">Review<br />&amp; refine</span>
+            </div>
+
+            <!-- Start Node with HR Specialist Portrait Avatar -->
+            <div class="start-chip hr-start rv" style="--i:4" data-step="0">
+              <span class="start-avatar">
+                <img src="./assets/avatar-hr.png" alt="HR Specialist" />
+              </span>
+              <span><b>Start: HR</b><small>After employee assessment</small></span>
+              <span class="flow-pointer"><svg><use href="#i-arrow-right"></use></svg></span>
+            </div>
+
+            <!-- Steps 01 to 04 Stack -->
+            <div class="steps-seq hr-steps">
+              <article class="step-card cyan rv" style="--i:5" data-step="1">
+                <span class="step-no">01</span>
+                <div class="step-body">
+                  <h2><b>Understand</b> the workforce</h2>
+                  <ul class="ticks">
+                    <li>Review participation and AI readiness.</li>
+                    <li>Review personas and profile confidence.</li>
+                    <li>Identify clarification needs.</li>
+                  </ul>
+                </div>
+                <div class="card-viz">
+                  <div class="viz-icon cyan"><svg><use href="#i-users-search"></use></svg></div>
+                </div>
+              </article>
+
+              <article class="step-card purple rv" style="--i:6" data-step="2">
+                <span class="step-no">02</span>
+                <div class="step-body">
+                  <h2><b>Develop</b> capabilities</h2>
+                  <ul class="ticks">
+                    <li>Analyse capability gaps across divisions.</li>
+                    <li>Review learning progress and impact.</li>
+                    <li>Draft selected-persona 90-day plans.</li>
+                  </ul>
+                </div>
+                <div class="card-viz">
+                  <div class="viz-icon purple"><svg><use href="#i-book-chart"></use></svg></div>
+                </div>
+              </article>
+
+              <article class="step-card amber rv" style="--i:7" data-step="3">
+                <span class="step-no">03</span>
+                <div class="step-body">
+                  <h2><b>Develop</b> talents</h2>
+                  <ul class="ticks">
+                    <li>Review project interest and capacity.</li>
+                    <li>Track supervisor decisions and reasons.</li>
+                    <li>Monitor assignment and participation.</li>
+                  </ul>
+                </div>
+                <div class="card-viz">
+                  <div class="viz-icon amber"><svg><use href="#i-user-briefcase"></use></svg></div>
+                </div>
+              </article>
+
+              <article class="step-card cyan rv" style="--i:8" data-step="4">
+                <span class="step-no">04</span>
+                <div class="step-body">
+                  <h2><b>Review</b> outcome</h2>
+                  <ul class="ticks">
+                    <li>Review completed contributions &amp; deliverables.</li>
+                    <li>Validate project benefit evidence.</li>
+                    <li>Identify what to improve or scale across TM.</li>
+                  </ul>
+                </div>
+                <div class="card-viz">
+                  <div class="viz-icon cyan"><svg><use href="#i-file-chart"></use></svg></div>
+                </div>
+              </article>
+            </div>
+
+            <!-- HR Actions Section -->
+            <div class="hr-actions-card rv" style="--i:9" data-step="5">
+              <div class="actions-header">
+                <span class="actions-title">HR Actions</span>
+              </div>
+              <div class="actions-grid">
+                <div class="action-btn c-cyan">
+                  <svg><use href="#i-users"></use></svg>
+                  <b>Prioritise</b>
+                  <span>workforce support</span>
+                </div>
+                <div class="action-btn c-purple">
+                  <svg><use href="#i-book"></use></svg>
+                  <b>Target</b>
+                  <span>learning interventions</span>
+                </div>
+                <div class="action-btn c-amber">
+                  <svg><use href="#i-target"></use></svg>
+                  <b>Coordinate</b>
+                  <span>suitable talent</span>
+                </div>
+                <div class="action-btn c-green">
+                  <svg><use href="#i-award"></use></svg>
+                  <b>Recognise</b>
+                  <span>validated contribution</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Strategic Workforce Decisions Card -->
+            <footer class="realised-card hr-decisions rv" style="--i:10" data-step="6">
+              <div class="realised-head">
+                <span class="pulse-sparkle"><svg><use href="#i-shield"></use></svg></span>
+                <p>Strategic Workforce Decisions</p>
+                <span class="pulse-sparkle"><svg><use href="#i-shield"></use></svg></span>
+              </div>
+              <div class="realised-grid">
+                <div class="realised-item c-cyan">
+                  <div class="r-icon"><svg><use href="#i-grad-cap"></use></svg></div>
+                  <div class="r-text"><b>Upskill</b><span>Future capabilities</span></div>
+                </div>
+                <div class="realised-item c-purple">
+                  <div class="r-icon"><svg><use href="#i-deploy-users"></use></svg></div>
+                  <div class="r-text"><b>Deploy</b><span>Match to AI projects</span></div>
+                </div>
+                <div class="realised-item c-amber">
+                  <div class="r-icon"><svg><use href="#i-medal"></use></svg></div>
+                  <div class="r-text"><b>Recognise</b><span>Celebrate value created</span></div>
+                </div>
+                <div class="realised-item c-green">
+                  <div class="r-icon"><svg><use href="#i-sprout"></use></svg></div>
+                  <div class="r-text"><b>Retain</b><span>Sustain enterprise growth</span></div>
+                </div>
+              </div>
+            </footer>
+          </div>
+        </section>
+
+        <!-- Global Watermark -->
+        <p class="powered" aria-hidden="true">Powered by IT as a Service (ITaaS), GITD</p>
+
+        <!-- Floating Indicators -->
+        <div class="pause-badge" aria-hidden="true"><span></span><span></span> Paused <small>Press Space to resume</small></div>
+        <div class="toast" id="toast" aria-hidden="true"></div>
+
+        <!-- Floating HUD Playback Controls -->
+        <nav class="hud" id="hud" aria-label="Playback controls">
+          <button type="button" class="pause-btn" id="pauseBtn" aria-label="Pause playback" aria-pressed="false">
+            <svg class="ic-pause"><use href="#i-pause"></use></svg>
+            <svg class="ic-play"><use href="#i-play"></use></svg>
+          </button>
+          <ol class="segments">
+            <li><button type="button" data-go="0"><span class="seg-label"><b>1</b>Employee Journey</span><span class="seg-bar"><i></i></span></button></li>
+            <li><button type="button" data-go="1"><span class="seg-label"><b>2</b>HR Journey</span><span class="seg-bar"><i></i></span></button></li>
+          </ol>
+          <p class="hints"><kbd>←</kbd><kbd>→</kbd> Navigate <kbd>Space</kbd> Pause <kbd>F</kbd> Fullscreen</p>
+        </nav>
+
+        <div class="mini-progress" aria-hidden="true"><i></i><i></i></div>
+        <p class="sr-only" role="status" aria-live="polite" id="status">Playing · Page 1 of 2</p>
+      </div>
+    </main>
+
+    <!-- Vector Icon Definitions -->
+    <svg class="svg-defs" aria-hidden="true">
+      <defs>
+        <symbol id="i-pause" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></symbol>
+        <symbol id="i-play" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"/></symbol>
+        <symbol id="i-arrow-down" viewBox="0 0 24 24"><path d="M12 5v14M19 12l-7 7-7-7"/></symbol>
+        <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
+        <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+
+        <symbol id="i-lightbulb" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v4M12 15h.01"/><path d="M9 10a3 3 0 0 1 6 0c0 1.5-1.5 2-1.5 3h-3c0-1-1.5-1.5-1.5-3z"/></symbol>
+        <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></symbol>
+        <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="3"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><circle cx="12" cy="13" r="1.5"/></symbol>
+        <symbol id="i-user-check" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M5 20v-1a7 7 0 0 1 11.5-5.2"/><polyline points="15 18 18 21 23 16"/></symbol>
+        <symbol id="i-file-text" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></symbol>
+        <symbol id="i-clipboard-check" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><polyline points="9 14 11 16 15 11"/></symbol>
+        <symbol id="i-cog" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9 7 7M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></symbol>
+        <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 3v4M17 5h4M5 17v4M3 19h4"/></symbol>
+        <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></symbol>
+
+        <symbol id="i-coins" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6a8 3 0 0 0 16 0V6"/><path d="M4 12v6a8 3 0 0 0 16 0v-6"/></symbol>
+        <symbol id="i-dollar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M15 9.5a2.5 2.5 0 0 0-5 0c0 3 5 2 5 5a2.5 2.5 0 0 1-5 0"/></symbol>
+        <symbol id="i-chart-trend" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-6 6"/><polyline points="14 9 19 9 19 14"/></symbol>
+        <symbol id="i-users-group" viewBox="0 0 24 24"><circle cx="12" cy="7" r="3"/><path d="M7 21v-1a5 5 0 0 1 10 0v1"/><circle cx="5" cy="9" r="2.5"/><path d="M1 21v-1a4 4 0 0 1 4-4"/><circle cx="19" cy="9" r="2.5"/><path d="M23 21v-1a4 4 0 0 0-4-4"/></symbol>
+
+        <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2 21v-1a6 6 0 0 1 6-6h2a6 6 0 0 1 6 6v1"/><circle cx="17.5" cy="9" r="2.5"/><path d="M18 14.2a5 5 0 0 1 4 4.8V21"/></symbol>
+        <symbol id="i-users-search" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2 21v-1a6 6 0 0 1 6-6h2a6 6 0 0 1 6 6v1"/><circle cx="16" cy="14" r="3"/><path d="m18.5 16.5 3 3"/></symbol>
+        <symbol id="i-book-chart" viewBox="0 0 24 24"><path d="M2 5a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v15a3 3 0 0 0-3-3H5a3 3 0 0 0-3 3z"/><path d="M22 5a3 3 0 0 0-3-3h-6a3 3 0 0 0-3 3v15a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3z"/><path d="M15 14v4M18 10v8"/></symbol>
+        <symbol id="i-user-briefcase" viewBox="0 0 24 24"><circle cx="8" cy="7" r="4"/><path d="M2 21v-1a6 6 0 0 1 9-5.2"/><rect x="13" y="11" width="9" height="7" rx="1.5"/><path d="M16 11V9.5a1.5 1.5 0 0 1 3 0V11"/></symbol>
+        <symbol id="i-file-chart" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 17v-3M12 17v-5M15 17v-2"/></symbol>
+        <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+        <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><polyline points="8.2 13.8 6 22 12 18.5 18 22 15.8 13.8"/></symbol>
+        <symbol id="i-grad-cap" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><path d="M6 10v5c0 3.3 2.7 6 6 6s6-2.7 6-6v-5"/><path d="M22 10v6"/></symbol>
+        <symbol id="i-deploy-users" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M6 21v-1a6 6 0 0 1 12 0v1"/><circle cx="4" cy="11" r="2.5"/><path d="M1 21v-1a4 4 0 0 1 4-4"/><circle cx="20" cy="11" r="2.5"/><path d="M23 21v-1a4 4 0 0 0-4-4"/></symbol>
+        <symbol id="i-medal" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="M9 14.5 7 21l5-3 5 3-2-6.5"/></symbol>
+        <symbol id="i-sprout" viewBox="0 0 24 24"><path d="M7 20h10M12 20v-8"/><path d="M12 12a5 5 0 0 1 5-5h1v1a5 5 0 0 1-5 5z"/><path d="M12 10a5 5 0 0 0-5-5H6v1a5 5 0 0 0 5 5z"/></symbol>
+      </defs>
+    </svg>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+fastmcp<5,>=4.1
+httpx<1,>=0.28
+
+[dev]
+pytest<10,>=8
+pytest-asyncio<2,>=0.24

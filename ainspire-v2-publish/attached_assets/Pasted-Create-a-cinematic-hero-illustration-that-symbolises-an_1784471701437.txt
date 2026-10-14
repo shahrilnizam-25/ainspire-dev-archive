@@ -1,0 +1,230 @@
+Create a cinematic hero illustration that symbolises an employee embarking on a personalised AI transformation journey.
+
+At the centre of the scene, place a single Telekom Malaysia employee viewed from behind, walking confidently towards a large glowing AI portal.
+
+The portal represents the gateway to the employee's AI future.
+
+Inside the portal:
+
+A holographic AI neural network
+Digital intelligence particles
+Kuala Lumpur skyline
+Soft futuristic city lights
+Connected AI ecosystem
+
+The employee should appear to be stepping into a brighter AI-enabled future.
+
+The portal emits vibrant blue and purple neon light, creating a premium and inspiring atmosphere.
+
+AI Data Streams
+
+From both sides of the screen, create flowing AI energy streams that converge towards the portal.
+
+Left Side (Current State)
+
+Represent the employee's assessment journey.
+
+Include floating holographic cards:
+
+AI Insights
+Employee Profile
+Workforce Analytics
+
+Icons should represent:
+
+Brain
+User Profile
+Analytics Dashboard
+
+Use cyan and blue tones.
+
+These cards should appear to flow naturally into the portal.
+
+Right Side (Future State)
+
+Represent personalised AI growth.
+
+Include floating holographic cards:
+
+Learning Paths
+Career Growth
+AI Goals
+
+Icons should represent:
+
+Graduation Cap
+Target
+Growth Chart
+
+Use purple and magenta tones.
+
+The AI data stream should continue beyond the portal, symbolising continuous learning and career development.
+
+Storytelling
+
+The illustration should communicate a clear business story:
+
+Employees begin by understanding themselves, enter an AI-powered reasoning process, and emerge with a personalised AI learning journey that supports their future career growth.
+
+Feature Cards
+
+Create three premium enterprise feature cards beneath the hero illustration.
+
+Each card should use:
+
+Glassmorphism
+Rounded corners
+Frosted glass effect
+Soft blue glow
+Minimal shadow
+Clean spacing
+Card 1
+
+🧠 Brain Icon
+
+AI-Powered Classification
+
+Claude Sonnet reasons holistically across employee responses to determine the most suitable AI persona.
+
+Card 2
+
+👤 User Icon
+
+Personalised Learning Pathway
+
+Tailored learning recommendations based on employee role, AI readiness and career aspirations.
+
+Card 3
+
+📊 Analytics Icon
+
+Workforce Analytics
+
+Enterprise-ready insights supporting HR with explainable AI and responsible workforce decisions.
+
+Bottom Trust Bar
+
+Create a modern trust section with evenly spaced premium icons.
+
+Each item should contain:
+
+Minimal icon
+
+Bold title
+
+Small supporting statement
+
+🛡 Secure & Trusted
+
+Enterprise-grade security and data protection.
+
+🧠 AI-Driven
+
+Advanced Agentic AI reasoning.
+
+👤 Employee-Centric
+
+Designed for every employee's AI journey.
+
+📈 Future-Ready
+
+Preparing Telekom Malaysia's workforce for the AI era.
+
+Icons should use:
+
+Outline style
+Soft neon glow
+Blue and purple accents
+Background
+
+Create a clean futuristic enterprise background.
+
+Include:
+
+Dark navy gradient
+
+Digital particle waves
+
+Flowing AI energy streams
+
+Abstract neural network connections
+
+Subtle digital circuit patterns
+
+Soft holographic lighting
+
+Blue light effects on the left
+
+Purple light effects on the right
+
+Minimal glowing particles
+
+Light volumetric lighting around the portal
+
+Keep plenty of negative space to emphasise the hero illustration.
+
+The overall composition should feel modern, elegant and executive.
+
+Design Style
+
+Design language inspired by:
+
+Microsoft Copilot
+Microsoft Build
+OpenAI Enterprise
+NVIDIA AI Enterprise
+SAP Business AI
+IBM Watsonx
+Apple WWDC Keynote
+Deloitte AI
+Accenture Generative AI
+
+Visual characteristics:
+
+Premium enterprise aesthetic
+Minimalist
+Glassmorphism
+Cinematic lighting
+Soft neon glow
+Large typography
+Balanced whitespace
+High contrast
+Executive presentation quality
+Trustworthy
+Inspirational
+Future-focused
+
+Avoid:
+
+Gaming interfaces
+Cyberpunk clutter
+Overly complex graphics
+Excessive visual noise
+Quality Requirements
+
+Generate:
+
+16:9 widescreen (1920 × 1080)
+4K Ultra HD
+Presentation-ready quality
+High readability
+Professional typography
+Corporate branding quality
+Photorealistic lighting
+Crisp icons
+Clean composition
+Fortune 500 enterprise design
+Suitable for executive presentations, CIO briefings and AI innovation showcases
+No watermarks
+No distorted text
+No clutter
+⭐ One Improvement I Would Add
+
+Since your product is called AiNspire, I would make the portal itself more meaningful.
+
+Instead of simply showing someone walking into a portal, the portal should symbolise AI reasoning. As the employee enters, the portal subtly transforms them into an AI-empowered professional, while four coloured streams emerge from the other side, representing the four personas:
+
+🔵 AI Explorer – Discover AI possibilities
+🟢 AI Builder – Apply AI to improve work
+🟣 AI Strategist – Drive organisational transformation
+🟠 AI Visionary – Lead AI innovation

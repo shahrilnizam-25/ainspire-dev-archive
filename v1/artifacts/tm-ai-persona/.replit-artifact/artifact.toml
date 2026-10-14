@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "TM AI Persona Assessment"
+version = "1.0.0"
+id = "artifacts/tm-ai-persona"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 26222
+
+[services.development]
+run = "pnpm --filter @workspace/tm-ai-persona run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/tm-ai-persona", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/tm-ai-persona/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "26222"
+BASE_PATH = "/"
